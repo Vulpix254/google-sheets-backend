@@ -11,6 +11,6 @@
     "cors": "^2.8.5"
   },
   "engines": {
-    "node": "20.17"  // Specify the Node.js version you want
+    "node": "20.x"  // Specify the Node.js version you want
   }
 }

@@ -1,13 +1,15 @@
 const express = require('express');
 const { google } = require('googleapis');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Load Google Sheets API credentials
+// Load Google Sheets API credentials from environment variable
+const credentials = JSON.parse(process.env.GOOGLE_SHEETS_CREDENTIALS);
 const auth = new google.auth.GoogleAuth({
-    keyFile: path.join(__dirname, 'list-hosting-4a95eacab374.json'), // replace with the path to your JSON credentials file
+    credentials,
     scopes: ['https://www.googleapis.com/auth/spreadsheets.readonly'],
 });
 

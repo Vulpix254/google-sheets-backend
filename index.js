@@ -1,10 +1,13 @@
 const express = require('express');
 const { google } = require('googleapis');
 const path = require('path');
-const fs = require('fs');
+const cors = require('cors');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Enable CORS
+app.use(cors());
 
 // Load Google Sheets API credentials from environment variable
 const credentials = JSON.parse(process.env.GOOGLE_SHEETS_CREDENTIALS);

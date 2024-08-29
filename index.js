@@ -37,6 +37,10 @@ app.get('/getData', async (req, res) => {
     }
 });
 
+app.get('/getOMDBApiKey', (req, res) => {
+    res.json({ apiKey: process.env.OMDB_API_KEY });
+});
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on http://localhost:${PORT}`);

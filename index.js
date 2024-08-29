@@ -22,7 +22,7 @@ app.get('/getData', async (req, res) => {
         const client = await auth.getClient();
         const sheets = google.sheets({ version: 'v4', auth: client });
 
-        const spreadsheetId = '1hAsF2iK_EUkkUHsJSFgcULdjnOmq5xm9fyYk7muavyI'; // replace with your Google Sheet ID
+        const spreadsheetId = '1EmCG6wZUN6GjB-zOj9QHYVzqLSYw_XUcTODaCmu0xto'; // replace with your Google Sheet ID
         const range = 'List!A:S'; // replace with the appropriate range in your sheet
 
         const response = await sheets.spreadsheets.values.get({

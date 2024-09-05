@@ -7,7 +7,10 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Enable CORS
-app.use(cors());
+app.use(cors({
+    origin: 'https://vulpix254.github.io' // Allow requests from this specific origin
+}));
+
 
 // Load Google Sheets API credentials from environment variable
 const credentials = JSON.parse(process.env.GOOGLE_SHEETS_CREDENTIALS);

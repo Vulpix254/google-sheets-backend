@@ -1,7 +1,7 @@
 const express = require('express');
 const { google } = require('googleapis');
-const path = require('path');
 const cors = require('cors');
+require('dotenv').config(); // Ensure you have dotenv installed to load environment variables
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,8 +22,8 @@ app.get('/getData', async (req, res) => {
         const client = await auth.getClient();
         const sheets = google.sheets({ version: 'v4', auth: client });
 
-        const spreadsheetId = '1EmCG6wZUN6GjB-zOj9QHYVzqLSYw_XUcTODaCmu0xto'; // Replace with your Google Sheet ID
-        const range = 'List!A:S'; // Replace with the appropriate range in your sheet
+        const spreadsheetId = 'your-spreadsheet-id-here'; // replace with your Google Sheet ID
+        const range = 'List!A:S'; // replace with the appropriate range in your sheet
 
         const response = await sheets.spreadsheets.values.get({
             spreadsheetId,
@@ -37,12 +37,10 @@ app.get('/getData', async (req, res) => {
     }
 });
 
+// Endpoint to fetch OMDB API key from the environment
 app.get('/getOMDBApiKey', (req, res) => {
     res.json({ apiKey: process.env.OMDB_API_KEY });
 });
-
-// Serve the frontend files (Optional if you're serving files statically)
-app.use(express.static(path.join(__dirname, 'public')));
 
 // Start the server
 app.listen(PORT, () => {
